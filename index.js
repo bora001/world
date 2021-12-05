@@ -5,7 +5,10 @@ const success = (pos) => {
 
   const locationNow = fetch(`https://geocode.xyz/${lat},${lon}?json=1"`)
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => {
+      console.log(data);
+      countryInfo(data.country);
+    });
 
   console.log(locationNow);
 };
@@ -15,3 +18,13 @@ const error = (err) => {
 };
 
 navigator.geolocation.getCurrentPosition(success, error);
+
+const countryInfo = (country) => {
+  console.log(country, "this is!");
+
+  const info = fetch(`https://restcountries.com/v2/name/${country}`).then(
+    (res) => res.json().then((data) => console.log(data))
+  );
+
+  // https://restcountries.com/v3.1/name/{name}
+};

@@ -1,0 +1,31 @@
+#cnt {
+  display: flex;
+  opacity: 0;
+  transition: 1s;
+}
+
+#cnt .country_box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5%;
+  margin: 5%;
+  box-shadow: 0px 12px 15px rgb(209, 203, 203);
+  overflow: hidden;
+}
+
+#cnt .country_box .txt_box {
+  padding: 3%;
+}
+#cnt .country_box .txt_box .name {
+  font-size: 25px;
+}
+
+.getinfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid red;
+  cursor: pointer;
+  transition: 0.2s;
+}

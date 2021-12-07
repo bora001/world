@@ -28,7 +28,10 @@ const errorRender = (err) => {
 };
 
 const error = (err) => {
-  console.warn("Error", err.code, err.message);
+  const html = `<div class="error">
+  <p>We can not get your location! Try again or check your Browser's Location Permission!</p><button onClick="location.reload();"><span class="plane"></span></button></div>
+    `;
+  cnt.insertAdjacentHTML("beforeend", html);
 };
 
 navigator.geolocation.getCurrentPosition(success, error);

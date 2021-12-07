@@ -65,6 +65,7 @@ body {
   height: 100%;
   transition: 1s;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 #cnt .country_box .front {
   display: flex;

@@ -1,6 +1,8 @@
 const cnt = document.getElementById("cnt");
 const body = document;
+
 let placeNow;
+
 const success = (pos) => {
   let crd = pos.coords;
   let lat = crd.latitude;
@@ -58,39 +60,48 @@ const countryInfo = async function (country) {
 
 const RenderCountry = (info) => {
   const html = `<div class="country_box" data=${info.alpha2Code}>
-      <div class="flag_box"><img class="flag" src=${
+      <div class="flag_box front"><img class="flag" src=${
         info.flags.png
-      } alt="" /></div>
-      <div class="txt_box">
-        <h1 class="name">${info.name}</h1>
-        <p class="capital">${info.capital}</p>
-        <p class="lang">${info.languages.map((a) => a.name)}</p>
-        <p class="currency">${info.currencies.map((a) =>
-          Object.values(a).join(" ")
-        )}</p>
+      } alt="" />
+        <h1>${info.name.toUpperCase()}</h1>
       </div>
+      <div class="txt_box back">
+        <h1 class="name">${info.name}</h1>
+        <p class="capital">🏠 ${info.capital}</p>
+            <p class="lang">🔊 ${info.languages.map((lang) => lang.name)}</p>
+            <p class="currency">💵 ${info.currencies.map(
+              (money) => money.code
+            )}</p>
+      <p class="current">Your Location</p>
+            
+      </div>
+      
     </div>
     `;
   cnt.insertAdjacentHTML("beforeend", html);
 
   const box = document.querySelector(".country_box");
-  box.style.backgroundColor = "rgba(196, 199, 235, 0.274)";
+  box.style.boxShadow = "0px 0px 35px rgb(128, 121, 121)";
 };
 
 const RenderBorder = (info) => {
+  console.log(info);
   const html = `<div class="country_box" data=${info.alpha2Code}>
+    <div class="flag_box front">
       <img class="flag" src=${info.flags.png} alt="" />
-      <div class="txt_box">
+        <h1>${info.name.toUpperCase()}</h1>
+    </div>
+        <div class="txt_box back">
         <h1 class="name">${info.name}</h1>
-        <p class="capital">${info.capital}</p>
-        <p class="lang">${info.languages.map((a) => a.name)}</p>
-        <p class="currency">${info.currencies.map((a) =>
-          Object.values(a).join(" ")
-        )}</p>
-        <button class="more" onClick="getInfo(this)" data=${
-          info.alpha2Code
-        }>more</button>
-      </div>
+            <p class="capital">🏠 ${info.capital}</p>
+            <p class="lang">🔊 ${info.languages.map((lang) => lang.name)}</p>
+            <p class="currency">💵 ${info.currencies.map(
+              (money) => money.code
+            )}</p>
+            <button class="more" onClick="getInfo(this)" data=${
+              info.alpha2Code
+            }>Select</button>
+        </div>
     </div>
     `;
   cnt.insertAdjacentHTML("beforeend", html);

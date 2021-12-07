@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
+body {
+  background-color: rgb(240, 236, 236);
+}
+
 #cnt {
+  justify-content: center;
   display: flex;
   opacity: 0;
   transition: 1s;
@@ -38,27 +43,67 @@
 }
 
 #cnt .country_box {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   border-radius: 5%;
   margin: 3%;
-  padding-top: 2%;
   width: 340px;
+  height: 500px;
   box-shadow: 0px 0px 30px rgb(209, 203, 203);
-  overflow: hidden;
+  background-color: #fff;
+  transform-style: preserve-3d;
+}
+
+#cnt .country_box:hover {
+  transition: 1s;
+  transform: rotateX(180deg);
+}
+
+#cnt .country_box .front,
+#cnt .country_box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+#cnt .country_box .front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#cnt .country_box .front h1 {
+  text-align: center;
+  font-size: 43px;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+#cnt .country_box .back {
+  height: 90%;
+  transform: rotateX(180deg);
+  padding: 6%;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+#cnt .country_box .back .current {
+  width: 200px;
+  line-height: 40px;
+  margin-top: 60px;
+  font-weight: 300;
+  text-align: center;
+  background-color: rgb(105, 221, 38);
+  color: #fff;
+  /* border: 2px solid rgb(105, 221, 38); */
 }
 
 #cnt .country_box .flag {
   width: 100%;
 }
 
-#cnt .country_box .txt_box {
-  padding: 6%;
-  letter-spacing: 1px;
-}
 #cnt .country_box .txt_box .name {
   font-size: 35px;
   width: 100%;
+  margin-bottom: 20%;
 }
 
 .getinfo {
@@ -76,8 +121,18 @@ button {
   font-family: "Fredoka One", cursive;
   cursor: pointer;
   border: none;
+  background-color: rgb(218, 216, 216);
 }
 
 .more {
   padding: 2%;
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-top: 10%;
+}
+
+.more:hover {
+  background-color: red;
+  color: #fff;
+  transition: 0.4s;
 }

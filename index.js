@@ -6,12 +6,23 @@ const success = (pos) => {
   let lat = crd.latitude;
   let lon = crd.longitude;
 
-  const locationNow = fetch(`https://geocode.xyz/${lat},${lon}?json=1"`)
+  const locationNow = fetch(`https://geocode.xyz/${lat},${lon}?json=1`)
     .then((res) => res.json())
     .then((data) => {
       countryInfo(data.prov);
       placeNow = data.prov;
+    })
+    .catch((err) => {
+      if (err) throw new Error();
     });
+};
+
+const errorRender = (err) => {
+  console.log(err);
+  const html = `<div class="error">
+  <p>Sorry, Something went wrong! Try again!</p><button onClick="location.reload();"><span class="plane"></span></button></div>
+    `;
+  cnt.insertAdjacentHTML("beforeend", html);
 };
 
 const error = (err) => {
@@ -22,20 +33,26 @@ navigator.geolocation.getCurrentPosition(success, error);
 
 const countryInfo = async function (country) {
   // info
-  const info = await fetch(
-    `https://restcountries.com/v2/alpha?codes=${country}`
-  );
+  try {
+    const info = await fetch(
+      `https://restcountries.com/v2/alpha?codes=${country}`
+    );
 
-  //data
-  const [data] = await info.json();
-  let border = data.borders;
-  if (placeNow !== country) {
-    RenderBorder(data);
-  } else if (country == placeNow) {
-    RenderCountry(data);
-    for (let otherCountry of border) {
-      countryInfo(otherCountry);
+    //data
+    const [data] = await info.json();
+    let border = data.borders;
+
+    if (placeNow !== country) {
+      RenderBorder(data);
+    } else if (country == placeNow) {
+      RenderCountry(data);
+      for (let otherCountry of border) {
+        countryInfo(otherCountry);
+      }
     }
+  } catch (err) {
+    console.log(`${err}`);
+    errorRender(err);
   }
 };
 
@@ -55,6 +72,9 @@ const RenderCountry = (info) => {
     </div>
     `;
   cnt.insertAdjacentHTML("beforeend", html);
+
+  const box = document.querySelector(".country_box");
+  box.style.backgroundColor = "rgba(196, 199, 235, 0.274)";
 };
 
 const RenderBorder = (info) => {

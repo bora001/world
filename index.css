@@ -8,6 +8,35 @@
   font-family: "Fredoka One", cursive;
 }
 
+#cnt .error {
+  width: 100%;
+  margin-top: 20%;
+  font-size: 28px;
+  /* top: 50%; */
+  text-align: center;
+}
+
+#cnt .error button {
+  position: relative;
+  border: none;
+  font-size: 35px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+#cnt .error button::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "🛬";
+}
+
+#cnt .error button:hover::before {
+  content: "🛫";
+  transition: 1s;
+}
+
 #cnt .country_box {
   display: flex;
   flex-direction: column;
@@ -18,6 +47,7 @@
   box-shadow: 0px 0px 30px rgb(209, 203, 203);
   overflow: hidden;
 }
+
 #cnt .country_box .flag {
   width: 100%;
 }

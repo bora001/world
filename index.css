@@ -81,9 +81,10 @@ body {
 
 #cnt .country_box .back {
   height: 90%;
+  width: 90%;
   transform: rotateX(180deg);
   padding: 6%;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 1px;
 }
 #cnt .country_box .back .current {

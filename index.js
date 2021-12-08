@@ -51,8 +51,10 @@ const countryInfo = async function (country) {
       RenderBorder(data);
     } else if (country == placeNow) {
       RenderCountry(data);
-      for (let otherCountry of border) {
-        countryInfo(otherCountry);
+      if (border !== undefined) {
+        for (let otherCountry of border) {
+          countryInfo(otherCountry);
+        }
       }
     }
   } catch (err) {

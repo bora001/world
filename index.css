@@ -139,6 +139,10 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
   #cnt .country_box:hover {
     transition: 0;
     transform: rotateX(0deg);
@@ -170,9 +174,16 @@ button {
   }
 
   #cnt .country_box .back {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 42%;
+    justify-content: space-around;
     transform: rotateX(0deg);
     padding: 2% 5%;
     font-size: 17px;
+    line-height: 0;
     letter-spacing: 1px;
   }
 
@@ -182,7 +193,7 @@ button {
   #cnt .country_box .back .current {
     width: 200px;
     line-height: 40px;
-    margin-top: 40px;
+    margin-top: 0px;
     font-weight: 300;
     text-align: center;
     background-color: rgb(105, 221, 38);

@@ -125,15 +125,85 @@ button {
   background-color: rgb(218, 216, 216);
 }
 
-.more {
+.select {
   padding: 2%;
   letter-spacing: 1px;
   font-size: 18px;
   margin-top: 10%;
 }
 
-.more:hover {
+.select:hover {
   background-color: red;
   color: #fff;
   transition: 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+  #cnt .country_box:hover {
+    transition: 0;
+    transform: rotateX(0deg);
+  }
+
+  #cnt .country_box .front,
+  #cnt .country_box .back {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transition: 1s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  #cnt .country_box .front {
+    display: flex;
+    height: 55%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #cnt .country_box .front h1 {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+
+  #cnt .country_box .back {
+    transform: rotateX(0deg);
+    padding: 2% 5%;
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+
+  #cnt .country_box .back .name {
+    display: none;
+  }
+  #cnt .country_box .back .current {
+    width: 200px;
+    line-height: 40px;
+    margin-top: 40px;
+    font-weight: 300;
+    text-align: center;
+    background-color: rgb(105, 221, 38);
+    color: #fff;
+    /* border: 2px solid rgb(105, 221, 38); */
+  }
+
+  #cnt .country_box .flag {
+    width: 100%;
+  }
+
+  #cnt .country_box .txt_box .name {
+    font-size: 35px;
+    width: 100%;
+    margin-bottom: 20%;
+  }
+
+  .select {
+    padding: 2%;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin-top: 5%;
+  }
 }

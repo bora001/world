@@ -101,7 +101,7 @@ const RenderBorder = (info) => {
             <p class="currency">💵 ${info.currencies.map(
               (money) => money.code
             )}</p>
-            <button class="more" onClick="getInfo(this)" data=${
+            <button class="select" onClick="getInfo(this)" data=${
               info.alpha2Code
             }>Select</button>
         </div>
